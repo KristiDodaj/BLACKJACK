@@ -48,11 +48,15 @@ public class CardDeck
 	{
 		this.deck.add(newCard);
 	}//end method
-	public void select(CardDeck original) 
+	public Card select(CardDeck original) 
+	{
+		return original.getCard(0);//returns card
+	}//draw card from deck
+	public void switching(CardDeck original) 
 	{
 		this.deck.add(original.getCard(0)); //draws card to players deck
 		original.remove(0); //removes card from original deck
-	}//draw card from deck
+	}
 	public int cardNumber() 
 	{
 		int totalvalue = 0;
