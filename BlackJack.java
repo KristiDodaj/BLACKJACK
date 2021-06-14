@@ -1,9 +1,11 @@
 package BlackJack;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.*;
 /**
  * @author Kristi Dodaj
@@ -12,187 +14,125 @@ import javax.swing.*;
  */
 public class BlackJack 
 {
-	public static void main(String[] args) 
+	public static void main(String[] args) throws IOException 
 	{
 		//Declaration&Initialization
-		int reply;
-		int userscoreTotal = 0;
-		int compscoreTotal = 0;
-		do {
 		CardDeck deck = new CardDeck();	
 		CardDeck userDeck = new CardDeck();
 		CardDeck compDeck = new CardDeck();
-
+		
+		//Display rules 
+		JOptionPane.showMessageDialog (null, "WELCOME TO BLACKJACK!" + "\n\n" + "1. THE GOAL IS TO REACH A TOTAL OF 21 WITHOUT PASSING IT." + "\n" + "2. IF YOU PASS A TOTAL OF 21, YOU HAVE BEEN BURNED!" + "\n" + "3. PRESS THE HIT BUTTON TO ADD A CARD OR STAND IF YOU ARE OKAY WITH YOUR TOTAL." + "\n" + "4. WHILE NUMBER CARDS ARE EQUAL TO THEIR NUMBER, FACED CARDS ARE EQUAL TO 10." + "\n" + "5. ACES COULD BE EQUAL TO BOTH 1 AND 11." + "\n" + "6. THE COMPUTER DEALER WILL THEN CREATE THEIR HAND." + "\n" + "7. READ THE MESSAGE DISPLAYED TO SEE THE WINNER!", "RULES", JOptionPane.INFORMATION_MESSAGE);
+	
 		//Frame
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
 		frame.setSize(600, 600);
 		frame.setLayout(null);
 		frame.setTitle("KRISTI'S CASINO: BLACK JACK");
-		frame.getContentPane().setBackground(Color.decode("#23ad23"));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		
+		JLabel back = new JLabel(new ImageIcon("C:\\Users\\Gezim\\eclipse-workspace\\KristiCasino\\src\\casino.png"));
+		back.setLayout(null);
+		back.setSize(600, 600);
+        frame.add(back);
+        
 		//Button HIT/STAND
 		JButton hit = new JButton("HIT");
 		hit.setBounds(60,100,95,30);  
-		hit.setLocation(140, 450);
-		hit.setBackground(Color.decode("#ffffff"));
-		frame.add(hit);
+		hit.setLocation(131, 519);
+		hit.setBackground(Color.decode("#FFE500"));
+		hit.setVisible(true);
+		back.add(hit);
 
 		JButton stand = new JButton("STAND");
 		stand.setBounds(60,100,95,30);  
-		stand.setLocation(360, 450);
-		stand.setBackground(Color.decode("#ffffff"));
-		frame.add(stand);
-
-		//Title
-		JLabel title = new JLabel("KRISTI'S CASINO: BLACK JACK");
-		title.setBounds(100,100,350,60);
-		title.setLocation(150, 20);
-		title.setForeground(Color.decode("#ffffff"));
-		title.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		frame.add(title);
+		stand.setLocation(373, 519);
+		stand.setBackground(Color.decode("#FFE500"));
+		back.add(stand);
 		
-		//User Print Areas
-		JLabel userHand = new JLabel("YOUR HAND: ", SwingConstants.CENTER);	
-		userHand.setForeground(Color.white);
-		userHand.setBounds(100,100,150,32);
-		userHand.setLocation(105, 100);
-		userHand.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		userHand.setVisible(true);
-		frame.add(userHand);
-			
+		//User Print Areas	
 		JLabel userhandone = new JLabel("CARD ONE", SwingConstants.CENTER);
 		userhandone.setOpaque(true);
-		userhandone.setBackground(Color.white);
+		userhandone.setBackground(Color.decode("#FFE500"));
 		userhandone.setForeground(Color.black);
-		userhandone.setBounds(100,100,150,32);
-		userhandone.setLocation(105, 230);
+		userhandone.setBounds(100,100,110, 26);
+		userhandone.setLocation(82, 477);
 		userhandone.setVisible(true);
-		frame.add(userhandone);
-		
-		JLabel cardonelabel = new JLabel("CARD 1:");	
-		cardonelabel.setBounds(100,100,150,32);
-		cardonelabel.setLocation(30, 160);
-		cardonelabel.setForeground(Color.white);
-		cardonelabel.setVisible(true);
-		frame.add(cardonelabel);
+		back.add(userhandone);
 		
 		JLabel userhandtwo = new JLabel("CARD TWO:", SwingConstants.CENTER);
 		userhandtwo.setOpaque(true);
-		userhandtwo.setBackground(Color.white);
+		userhandtwo.setBackground(Color.decode("#FFE500"));
 		userhandtwo.setForeground(Color.black);
-		userhandtwo.setBounds(100,100,150,32);
-		userhandtwo.setLocation(105, 160);
+		userhandtwo.setBounds(100,100,110,26);
+		userhandtwo.setLocation(405, 477);
 		userhandtwo.setVisible(true);
-		frame.add(userhandtwo);
-		
-		JLabel cardtwolabel = new JLabel("CARD 2:");	
-		cardtwolabel.setBounds(100,100,150,32);
-		cardtwolabel.setLocation(30, 230);
-		cardtwolabel.setForeground(Color.white);
-		cardtwolabel.setVisible(true);
-		frame.add(cardtwolabel);
-		
+		back.add(userhandtwo);
+
 		JLabel userHit = new JLabel("USER HIT", SwingConstants.CENTER);
 		userHit.setOpaque(true);
-		userHit.setBackground(Color.white);
+		userHit.setBackground(Color.decode("#FFE500"));
 		userHit.setForeground(Color.black);
-		userHit.setBounds(100,100,150,32);
-		userHit.setLocation(105, 300);
+		userHit.setBounds(100,100,97,32);
+		userHit.setLocation(249, 323);
 		userHit.setVisible(true);
-		frame.add(userHit);
-		
-		JLabel hitlabel = new JLabel("HIT:");	
-		hitlabel.setBounds(100,100,150,32);
-		hitlabel.setLocation(30, 300);
-		hitlabel.setForeground(Color.white);
-		hitlabel.setVisible(true);
-		frame.add(hitlabel);
+		back.add(userHit);
 		
 		JLabel userTotal = new JLabel("TOTAL", SwingConstants.CENTER);
 		userTotal.setOpaque(true);
-		userTotal.setBackground(Color.white);
+		userTotal.setBackground(Color.decode("#FFE500"));
 		userTotal.setForeground(Color.black);
-		userTotal.setBounds(100,100,150,32);
-		userTotal.setLocation(105, 370);
+		userTotal.setBounds(100,100,131,26);
+		userTotal.setLocation(233,477);
 		userTotal.setVisible(true);
-		frame.add(userTotal);
-		
-		JLabel totallabel = new JLabel("TOTAL:");	
-		totallabel.setBounds(100,100,150,32);
-		totallabel.setLocation(30, 370);
-		totallabel.setForeground(Color.white);
-		totallabel.setVisible(true);
-		frame.add(totallabel);
-		
+		back.add(userTotal);
+
 	    //Computer Print Areas
-		JLabel compHand = new JLabel("COMP HAND: ", SwingConstants.CENTER);	
-		compHand.setForeground(Color.white);
-		compHand.setBounds(100,100,150,32);
-		compHand.setLocation(340, 100);
-		compHand.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		compHand.setVisible(true);
-		frame.add(compHand);
-		
 		JLabel comphandone = new JLabel("CARD 1", SwingConstants.CENTER);
 		comphandone.setOpaque(true);
-		comphandone.setBackground(Color.white);
+		comphandone.setBackground(Color.decode("#FFE500"));
 		comphandone.setForeground(Color.black);
-		comphandone.setBounds(100,100,150,32);
-		comphandone.setLocation(340, 230);
+		comphandone.setBounds(100,100,100,32);
+		comphandone.setLocation(165, 172);
 		comphandone.setVisible(true);
-		frame.add(comphandone);
+		back.add(comphandone);
 		
 		JLabel comphandtwo = new JLabel("HIDDEN", SwingConstants.CENTER);
 		comphandtwo.setOpaque(true);
-		comphandtwo.setBackground(Color.white);
+		comphandtwo.setBackground(Color.decode("#FFE500"));
 		comphandtwo.setForeground(Color.black);
-		comphandtwo.setBounds(100,100,150,32);
-		comphandtwo.setLocation(340, 160);
+		comphandtwo.setBounds(100,100,95,32);
+		comphandtwo.setLocation(330, 172);
 		comphandtwo.setVisible(true);
-		frame.add(comphandtwo);
+		back.add(comphandtwo);
 		
 		JLabel compHit = new JLabel("COMP HIT", SwingConstants.CENTER);
 		compHit.setOpaque(true);
-		compHit.setBackground(Color.white);
+		compHit.setBackground(Color.decode("#FFE500"));
 		compHit.setForeground(Color.black);
-		compHit.setBounds(100,100,150,32);
-		compHit.setLocation(340, 300);
+		compHit.setBounds(100,100,119,38);
+		compHit.setLocation(235, 245);
 		compHit.setVisible(true);
-		frame.add(compHit);
+		back.add(compHit);
 		
 		JLabel compTotal = new JLabel("TOTAL", SwingConstants.CENTER);
-		compTotal.setOpaque(true);
-		compTotal.setBackground(Color.white);
-		compTotal.setForeground(Color.black);
-		compTotal.setBounds(100,100,150,32);
-		compTotal.setLocation(340, 370);
-		compTotal.setVisible(true);
-		frame.add(compTotal);
 		
-		//Score Area
-		JLabel compScore = new JLabel("COMPUTER SCORE: ");
-		compScore.setForeground(Color.white);
-		compScore.setBounds(100,100,150,32);
-		compScore.setLocation(450, 520);
-		frame.add(compScore);
+		JLabel winner = new JLabel("",SwingConstants.CENTER);
+		winner.setForeground(Color.white);
+		winner.setBounds(100,100,400,38);
+		winner.setLocation(105, 407);
+		winner.setVisible(true);
+		back.add(winner);
 		
-		JLabel userScore = new JLabel("USER SCORE: ");
-		userScore.setForeground(Color.white);
-		userScore.setBounds(100,100,150,32);
-		userScore.setLocation(30, 520);
-		frame.add(userScore);
-
         //Disables resizing
 		frame.setResizable(false);
+		frame.revalidate();
 		
 		//Back End
-		userInput(hit, stand, userhandone,userhandtwo, comphandone, comphandtwo,userHit, compHit, userTotal, compTotal, deck, userDeck, compDeck, userscoreTotal, compscoreTotal);
-		reply = JOptionPane.showConfirmDialog(null, "WOULD YOU LIKE TO PLAY AGAIN", "PLAY AGAIN", JOptionPane.YES_NO_OPTION);
-		}while(reply == JOptionPane.YES_OPTION);
+		userInput(hit, stand, userhandone,userhandtwo, comphandone, comphandtwo,userHit, compHit, userTotal, compTotal,winner, deck, userDeck, compDeck);
 	}//end method
-	public static void userInput(JButton hit, JButton stand, JLabel userhandone, JLabel userhandtwo, JLabel comphandone, JLabel comphandtwo,JLabel userHit, JLabel compHit, JLabel userTotal, JLabel compTotal, CardDeck deck, CardDeck userDeck, CardDeck compDeck, int userscoreTotal, int compscoreTotal) 
+	public static void userInput(JButton hit, JButton stand, JLabel userhandone, JLabel userhandtwo, JLabel comphandone, JLabel comphandtwo,JLabel userHit, JLabel compHit, JLabel userTotal, JLabel compTotal, JLabel winner, CardDeck deck, CardDeck userDeck, CardDeck compDeck) 
 	{
 		//Generates and shuffles
 		deck.fullDeck();
@@ -207,7 +147,7 @@ public class BlackJack
 		compDeck.switching(deck);
 		
 		//User Hand Total
-		userTotal.setText(String.valueOf(userDeck.cardNumber()));
+		userTotal.setText("USER TOTAL: "+String.valueOf(userDeck.cardNumber()));
 
         //Event listeners for HIT/STAND
 		hit.addActionListener(new ActionListener() 
@@ -217,15 +157,14 @@ public class BlackJack
 			{
 				userHit.setText(userDeck.select(deck).toString());
 				userDeck.switching(deck);
-				userTotal.setText(String.valueOf(userDeck.cardNumber()));
+				userTotal.setText("USER TOTAL: "+String.valueOf(userDeck.cardNumber()));
 				if (userDeck.cardNumber() > 21) 
 				{
 					//Disables buttons
 					hit.setEnabled(false);
 					stand.setEnabled(false);
-					System.out.println("Burned");
-					userTotal.setText(String.valueOf(userDeck.cardNumber()));
-					compCompare(compDeck, deck, userDeck, comphandone, comphandtwo, compHit, compTotal,userscoreTotal, compscoreTotal);
+					userTotal.setText("USER TOTAL: "+String.valueOf(userDeck.cardNumber()));
+					compCompare(compDeck, deck, userDeck, comphandone, comphandtwo, compHit, compTotal, winner);
 					//Once player is done it generates second computer card
 					comphandtwo.setText(compDeck.select(deck).toString());
 					compDeck.switching(deck);
@@ -240,20 +179,16 @@ public class BlackJack
 				//Disables buttons
 				stand.setEnabled(false);
 				hit.setEnabled(false);
-				userTotal.setText(String.valueOf(userDeck.cardNumber()));
+				userTotal.setText("USER TOTAL: "+String.valueOf(userDeck.cardNumber()));
 				//Once player is done it generates second computer card
 				comphandtwo.setText(compDeck.select(deck).toString());
 				compDeck.switching(deck);
-				compCompare(compDeck, deck, userDeck, comphandone, comphandtwo, compHit, compTotal, userscoreTotal, compscoreTotal);
+				compCompare(compDeck, deck, userDeck, comphandone, comphandtwo, compHit, compTotal, winner);
 			}
-		});	
+		});	 
 	}//end method
-	public static void compCompare(CardDeck compDeck, CardDeck deck, CardDeck userDeck, JLabel comphandone, JLabel comphandtwo, JLabel compHit, JLabel compTotal, int userscoreTotal, int compscoreTotal) 
+	public static void compCompare(CardDeck compDeck, CardDeck deck, CardDeck userDeck, JLabel comphandone, JLabel comphandtwo, JLabel compHit, JLabel compTotal, JLabel winner) 
 	{
-		int userscore = 0;
-		int compScore = 0;
-		int usertotalScore = 0;
-		int comptotalScore = 0;
 		//Print computer total
 		compTotal.setText(String.valueOf(compDeck.cardNumber()));
 		/**
@@ -286,26 +221,27 @@ public class BlackJack
 		 */
 		if (userDeck.cardNumber() > compDeck.cardNumber() && userDeck.cardNumber() <= 21) 
 		{
-			userscore++;
+			winner.setText("YOU WON!");
 		}
 		else if (userDeck.cardNumber() < compDeck.cardNumber() && compDeck.cardNumber() <= 21)  
 		{
-			compScore++;
+			winner.setText("COMPUTER WON WITH A TOTAL OF " + compDeck.cardNumber()+"!");
 		}
 		else if(userDeck.cardNumber() > 21 && compDeck.cardNumber() <= 21) 
 		{
-			compScore++;
+			winner.setText("BURNED! COMPUTER WINS!");
 		}
 		else if(userDeck.cardNumber() <= 21 && compDeck.cardNumber() > 21) 
 		{
-			userscore++;
+			winner.setText("COMPUTER GOT BURNED! YOU WIN!");
+		}
+		else if(userDeck.cardNumber() > 21 && compDeck.cardNumber() > 21) 
+		{
+			winner.setText("YOU BOTH GOT BURNED!");
 		}
 		else 
 		{
-			userscore++;
-			compScore++;
-		}
-		usertotalScore += userscore;
-		comptotalScore += compScore;
+			winner.setText("TIE!");
+		}//end if
 	}//end method
 }//end class

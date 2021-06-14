@@ -34,8 +34,6 @@ public class CardDeck
 		}//end loop
 		this.deck = shuffleDeck; //sets deck to shuffled version of array
 	}//end method that shuffles deck
-
-
 	public void remove(int j) 
 	{
 		this.deck.remove(j);
@@ -92,7 +90,7 @@ public class CardDeck
 				totalvalue += 11;
 			}//end if
 		}//end loop
-		return totalvalue;
+		return totalvalue; // returns the total value of cards
 	}//end method
 	public String toString()
 	{
