@@ -1,6 +1,8 @@
 package BlackJack;
 import java.util.ArrayList;
-
+/**
+ * Create a card using the suit and number enum
+ */
 public class Card 
 {
 	private Number number;

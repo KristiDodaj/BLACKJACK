@@ -1,7 +1,10 @@
 package BlackJack;
 import java.util.ArrayList;
 import java.util.Random;
-
+/**
+ * Use the card class to create a full deck
+ * Create methods to shuffle, create, and add/remove cards from deck
+ */
 public class CardDeck 
 {
 	private ArrayList<Card> deck;
