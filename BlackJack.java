@@ -16,21 +16,53 @@ public class BlackJack
 {
 	public static void main(String[] args) throws IOException 
 	{
-		//Declaration&Initialization
+		//Display rules 
+		JOptionPane.showMessageDialog (null, "WELCOME TO BLACKJACK!" + "\n\n" + "1. THE GOAL IS TO REACH A TOTAL OF 21 WITHOUT PASSING IT." + "\n" + "2. IF YOU PASS A TOTAL OF 21, YOU HAVE BEEN BURNED!" + "\n" + "3. PRESS THE HIT BUTTON TO ADD A CARD OR STAND IF YOU ARE OKAY WITH YOUR TOTAL." + "\n" + "4. WHILE NUMBER CARDS ARE EQUAL TO THEIR NUMBER, FACED CARDS ARE EQUAL TO 10." + "\n" + "5. ACES COULD BE EQUAL TO BOTH 1 AND 11." + "\n" + "6. THE COMPUTER DEALER WILL THEN CREATE THEIR HAND." + "\n" + "7. READ THE MESSAGE DISPLAYED TO SEE THE WINNER!" + "\n" + "8. PRESS YES TO PLAY AGAIN OR THE EXIT BUTTON ON BLACKJACK TO QUIT.", "RULES", JOptionPane.INFORMATION_MESSAGE);
+
+		//PLAY AGAIN DIALOG
+		JPanel panel = new JPanel();
+		panel.setLayout(new FlowLayout());
+		panel.add(new JLabel("WOULD YOU LIKE TO PLAY AGAIN?"));
+		JButton yes = new JButton("YES");
+		panel.add(yes);
+		JDialog dialog = new JDialog();
+		dialog.add(panel);
+		dialog.setSize(220, 100);
+		dialog.setResizable(false);
+		
+		//GUI
+		JFrame frame = new JFrame();
 		CardDeck deck = new CardDeck();	
 		CardDeck userDeck = new CardDeck();
 		CardDeck compDeck = new CardDeck();
+		gui(frame, deck, userDeck, compDeck);
+		dialog.setVisible(true);
 		
-		//Display rules 
-		JOptionPane.showMessageDialog (null, "WELCOME TO BLACKJACK!" + "\n\n" + "1. THE GOAL IS TO REACH A TOTAL OF 21 WITHOUT PASSING IT." + "\n" + "2. IF YOU PASS A TOTAL OF 21, YOU HAVE BEEN BURNED!" + "\n" + "3. PRESS THE HIT BUTTON TO ADD A CARD OR STAND IF YOU ARE OKAY WITH YOUR TOTAL." + "\n" + "4. WHILE NUMBER CARDS ARE EQUAL TO THEIR NUMBER, FACED CARDS ARE EQUAL TO 10." + "\n" + "5. ACES COULD BE EQUAL TO BOTH 1 AND 11." + "\n" + "6. THE COMPUTER DEALER WILL THEN CREATE THEIR HAND." + "\n" + "7. READ THE MESSAGE DISPLAYED TO SEE THE WINNER!", "RULES", JOptionPane.INFORMATION_MESSAGE);
-	
+		//PLAY AGAIN
+		yes.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{	
+				JFrame frame = new JFrame();
+				frame.dispose();	
+				
+				CardDeck deck = new CardDeck();	
+				CardDeck userDeck = new CardDeck();
+				CardDeck compDeck = new CardDeck();
+				gui(frame, deck, userDeck, compDeck);
+			}
+		});	
+	}//end method
+	public static void gui(JFrame frame, CardDeck deck, CardDeck userDeck, CardDeck compDeck) 
+	{
 		//Frame
-		JFrame frame = new JFrame();
+	    //frame = new JFrame();
 		frame.setVisible(true);
-		frame.setSize(600, 600);
+		frame.setSize(600, 600); 
 		frame.setLayout(null);
 		frame.setTitle("KRISTI'S CASINO: BLACK JACK");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
 		
 		JLabel back = new JLabel(new ImageIcon("C:\\Users\\Gezim\\eclipse-workspace\\KristiCasino\\src\\casino.png"));
 		back.setLayout(null);
@@ -129,11 +161,6 @@ public class BlackJack
 		frame.setResizable(false);
 		frame.revalidate();
 		
-		//Back End
-		userInput(hit, stand, userhandone,userhandtwo, comphandone, comphandtwo,userHit, compHit, userTotal, compTotal,winner, deck, userDeck, compDeck);
-	}//end method
-	public static void userInput(JButton hit, JButton stand, JLabel userhandone, JLabel userhandtwo, JLabel comphandone, JLabel comphandtwo,JLabel userHit, JLabel compHit, JLabel userTotal, JLabel compTotal, JLabel winner, CardDeck deck, CardDeck userDeck, CardDeck compDeck) 
-	{
 		//Generates and shuffles
 		deck.fullDeck();
 		deck.shuffleDeck();
