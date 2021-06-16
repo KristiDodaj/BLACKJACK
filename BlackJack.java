@@ -56,7 +56,6 @@ public class BlackJack
 	public static void gui(JFrame frame, CardDeck deck, CardDeck userDeck, CardDeck compDeck) 
 	{
 		//Frame
-	    //frame = new JFrame();
 		frame.setVisible(true);
 		frame.setSize(600, 600); 
 		frame.setLayout(null);
@@ -67,7 +66,7 @@ public class BlackJack
 		JLabel back = new JLabel(new ImageIcon("C:\\Users\\Gezim\\eclipse-workspace\\KristiCasino\\src\\casino.png"));
 		back.setLayout(null);
 		back.setSize(600, 600);
-        frame.add(back);
+                frame.add(back);
         
 		//Button HIT/STAND
 		JButton hit = new JButton("HIT");
@@ -120,7 +119,7 @@ public class BlackJack
 		userTotal.setVisible(true);
 		back.add(userTotal);
 
-	    //Computer Print Areas
+	        //Computer Print Areas
 		JLabel comphandone = new JLabel("CARD 1", SwingConstants.CENTER);
 		comphandone.setOpaque(true);
 		comphandone.setBackground(Color.decode("#FFE500"));
@@ -157,7 +156,7 @@ public class BlackJack
 		winner.setVisible(true);
 		back.add(winner);
 		
-        //Disables resizing
+                //Disables resizing
 		frame.setResizable(false);
 		frame.revalidate();
 		
@@ -176,7 +175,7 @@ public class BlackJack
 		//User Hand Total
 		userTotal.setText("USER TOTAL: "+String.valueOf(userDeck.cardNumber()));
 
-        //Event listeners for HIT/STAND
+                //Event listeners for HIT/STAND
 		hit.addActionListener(new ActionListener() 
 		{
 			@Override
