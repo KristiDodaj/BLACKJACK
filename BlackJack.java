@@ -63,7 +63,7 @@ public class BlackJack
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		
-		JLabel back = new JLabel(new ImageIcon("C:\\Users\\Gezim\\eclipse-workspace\\KristiCasino\\src\\casino.png"));
+		JLabel back = new JLabel(new ImageIcon("filepath"));
 		back.setLayout(null);
 		back.setSize(600, 600);
                 frame.add(back);
